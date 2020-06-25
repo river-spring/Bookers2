@@ -1,23 +1,23 @@
 <h2>User info</h2>
 <div>
-	<%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
 </div>
-<tbody>
+<table class="table">
 	<tr>
 		<th>name</th>
 		<th><%= user.name %></th>
 	</tr>
 	<tr>
 		<th>introduction</th>
-		<th></th>
+		<th><%= user.introduction %></th>
 	</tr>
-</tbody>
-<%= link_to "", edit_user_path(current_user.id),class: "btn btn-default glyphicon glyphicon-wrench" %>
+</table>
+<%= link_to "", edit_user_path(current_user.id),class: "btn btn-default glyphicon glyphicon-wrench btn-block" %>
 <h2>New book</h2>
 <%= form_for(book) do |f| %>
-	<label>Title</label>
-	<%= f.text_field :title %>
+	<label>Title</label><br>
+	<%= f.text_field :title, class: "form-control" %>
 	<label>Opinion</label>
-	<%= f.text_area :body %>
-	<%= f.submit 'Create Book' %>
+	<%= f.text_area :body, class: "form-control" %>
+	<%= f.submit 'Create Book', class: "btn btn-primary btn-block" %>
 <% end %>

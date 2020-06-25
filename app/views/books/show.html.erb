@@ -1,2 +1,26 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="col-xs-offset-1 col-xs-3">
+	<% if flash[:notice] %>
+<div class="flash">
+	<%= flash[:notice] %>
+</div>
+<% end %>
+	<%= render 'users/list', book: @book, user: @user %>
+</div>
+<div class="col-xs-7">
+<h2>Book detail</h2>
+<table class="table">
+	<tbody>
+				<tr>
+					<td><%= attachment_image_tag @book_show.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+					<td><%= @book_show.title %></td>
+					<td><%= @book_show.body %></td>
+					<% if @book_show.user == current_user %>
+					<td><%= link_to "Edit", edit_book_path(@book_show.id), class: "btn btn-success" %></td>
+					<td><%= link_to "Destroy", book_path(@book_show.id), method: :delete, class: "btn btn-danger" %></td>
+					<% end %>
+				</tr>
+			</tbody>
+</table>
+</div>
+<div class="col-xs-1">
+	</div>
