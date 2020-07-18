@@ -24,6 +24,7 @@
 					<td><%= attachment_image_tag book.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg" %></td>
 					<td><%= link_to book.title, book_path(book.id) %></td>
 					<td><%= book.body %></td>
+					<%= render 'books/comment', book: book %>
 				</tr>
 			</tbody>
 		<% end %>
