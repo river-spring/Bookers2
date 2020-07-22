@@ -1,0 +1,17 @@
+<ol>
+<% book.book_comments.each do |book_comment| %>
+<li id="comment-<%= book_comment.id %>">
+	<%= attachment_image_tag book_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+	<%= book_comment.comment %>
+	<% if book_comment.user == current_user %>
+	<%= link_to "Detroy",book_book_comment_path(book_comment.book, book_comment), method: :delete, remote: true, class: "btn btn-danger" %>
+	<% end %>
+</li>
+<% end %>
+</ol>
+<div id="comment-<%= book.id %>">
+<%= form_with(model: [book, book_comment], remote: true) do |f| %>
+<%= f.text_area :comment,class: "form-control", id: "form" %>
+<%= f.submit "送信",  class: "btn btn-block" %>
+<% end %>
+</div>
