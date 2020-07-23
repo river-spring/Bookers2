@@ -53,3 +53,4 @@
 //     hidePrevious : false
 //   });
 // });
+//= require jquery.jpostal

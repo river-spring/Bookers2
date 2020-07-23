@@ -27,6 +27,18 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode, autofocus: true, placeholder: 'postcode', class: "postal_code", id: "address_zipcode" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture %><br>
+    <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, class: "address", id: "addrss_prefecture_code" %><br>
+    <%= f.text_field :address, autofocus: true, placeholder: 'address', class: "address", id: "address_city" %><br>
+    <%= f.text_field :street, autofocus: true, placeholder: 'street', class: "address", id: "address_street" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-success" %>
   </div>
@@ -34,3 +46,5 @@
 
 <%= render "devise/shared/links" %>
 </div>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
